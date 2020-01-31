@@ -1,3 +1,5 @@
+package lhc;
+
 import java.net.URI;
 
 public enum Configuration {

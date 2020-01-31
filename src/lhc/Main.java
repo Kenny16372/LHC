@@ -1,8 +1,11 @@
+package lhc;
+
 import hr.SecurityOfficer;
 import hr.Visitor;
 import hr.dep.HRAssistant;
 import infrastructure.security.*;
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.net.URLClassLoader;
 
@@ -11,6 +14,7 @@ import java.text.SimpleDateFormat;
 public class Main {
     private static Object port;
     public static void main(String[] args) {
+        createSearchAlgorithmPortInstance();
         // Anwendungsfälle Erstellung von ID Karten durch die Rezeption bzw. das Security Centre
         Reception reception = new Reception();
         SecurityCentre securityCentre = new SecurityCentre();
@@ -54,6 +58,20 @@ public class Main {
         reader.insertIDCard(visitor.getIdCard());
         System.out.println(reader.allowEntry() ? "Darf betreten" : "Darf nicht betreten");
         reader.removeIDCard();
+    }
+
+    public static int search(String text, String pattern){
+        try {
+            return (int) port.getClass().getMethod("search", String.class, String.class).invoke(text, pattern);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } finally {
+            return -1;
+        }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})

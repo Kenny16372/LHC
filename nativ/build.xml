@@ -13,7 +13,7 @@
         <mkdir dir="jar" />
         <jar destfile="jar/Nativ.jar" basedir="build">
             <manifest>
-                <attribute name="Main-Class" value="Sort"/>
+                <attribute name="lhc.Main-Class" value="Sort"/>
             </manifest>
         </jar>
     </target>

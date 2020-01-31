@@ -74,7 +74,7 @@ public class Ring extends Subscriber{
         }
         this.releaseProton();
         this.collide(this.protonTraps[0].protons.pop(), this.protonTraps[1].protons.pop());
-        this.detector.addExperiment(this.currentExperiment);
+        event.controlCenter.startAnalyse(this.currentExperiment);
     }
     
     @Subscribe
@@ -87,6 +87,6 @@ public class Ring extends Subscriber{
         }
         this.releaseProton();
         this.collide(this.protonTraps[0].protons.pop(), this.protonTraps[1].protons.pop());
-        this.detector.addExperiment(this.currentExperiment);
+        event.controlCenter.startAnalyse(this.currentExperiment);
     }
 }

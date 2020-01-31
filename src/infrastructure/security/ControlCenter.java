@@ -6,7 +6,11 @@ import javax.crypto.NoSuchPaddingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import com.google.common.eventbus.EventBus;
+import infrastructure.lhc.Experiment;
 import infrastructure.lhc.Subscriber;
+import infrastructure.lhc.events.Analyse;
+import infrastructure.lhc.events.RunExperimentFull;
+import infrastructure.lhc.events.RunExperimentPartial;
 
 public class ControlCenter {
     private IReader reader;
@@ -20,12 +24,16 @@ public class ControlCenter {
     }
 
     
-    public void startExperiement(){
-        
+    public void startExperiement(int initalEnergy){
+        eventBus.post(new RunExperimentFull(initalEnergy,this));
     }
     
-    public void startExperiment(ExperimentScope scope){
-    
+    public void startExperiment(int inititalEnergy, ExperimentScope scope){
+        eventBus.post(new RunExperimentPartial(inititalEnergy, scope, this));
+    }
+
+    public void startAnalyse(Experiment experiment){
+        eventBus.post(new Analyse(experiment));
     }
     
     public void addSubscriber(Subscriber subscriber){

@@ -1,10 +1,13 @@
 package infrastructure.lhc;
 
 import java.util.LinkedList;
+
 import  infrastructure.security.Reader;
 
 import com.google.common.eventbus.Subscribe;
 import infrastructure.lhc.events.Analyse;
+import lhc.Main;
+
 import java.util.LinkedList;
 
 public class Detector extends Subscriber{
@@ -23,10 +26,14 @@ public class Detector extends Subscriber{
     
     @Subscribe
     public void receive(Analyse event){
-        
-    }
-
-    public void addExperiment(Experiment e){
-        this.experimentList.add(e);
+        Experiment experiment = event.experiment;
+        this.experimentList.add(experiment);
+        for(Block b:experiment.getBlocks()){
+            if(Main.search(b.getStructure(), this.higgsBosonStructure) > 0){
+                experiment.setIsHiggsBosonFound(true);
+                return;
+            }
+        }
+        experiment.setIsHiggsBosonFound(false);
     }
 }
