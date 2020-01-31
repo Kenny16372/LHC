@@ -69,15 +69,15 @@ public class Ring extends Subscriber{
     public void increaseEnergy(int delta){}
     public void collide(Proton proton01, Proton proton02 ){
         ArrayList<Block> blocks = new ArrayList<Block>();
-        int[][][] structure1 = proton01.getStructure();
-        int[][][] structure2 = proton02.getStructure();
+        char[][][] structure1 = proton01.getStructure();
+        char[][][] structure2 = proton02.getStructure();
         for(int x=0; x < 100; x++){
             for(int y=0; y < 100; y++){
                 for(int z=0; z < 100; z+=5){
                     char[] block = new char[10];
                     for(int i=0; i<5; i++){
-                        block[i] = (char) structure1[x][y][z+i];
-                        block[i+5] = (char) structure2[x][y][z+i];
+                        block[i] = structure1[x][y][z+i];
+                        block[i+5] = structure2[x][y][z+i];
                     }
                     blocks.add(new Block(UUID.randomUUID(), String.copyValueOf(block)));
                 }

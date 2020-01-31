@@ -26,16 +26,16 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\anton\IdeaProjects\LHC\nativ" />
-      <recent name="C:\Users\anton\IdeaProjects\LHC\knuthmorrispratt" />
-      <recent name="C:\Users\anton\IdeaProjects\LHC\src" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\anton\IdeaProjects\LHC\boyermoore\src" />
       <recent name="C:\Users\anton\IdeaProjects\LHC\knuthmorrispratt\src" />
       <recent name="C:\Users\anton\IdeaProjects\LHC\nativ\src" />
       <recent name="C:\Users\anton\IdeaProjects\LHC" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\anton\IdeaProjects\LHC\nativ" />
+      <recent name="C:\Users\anton\IdeaProjects\LHC\knuthmorrispratt" />
+      <recent name="C:\Users\anton\IdeaProjects\LHC\src" />
     </key>
   </component>
   <component name="RunDashboard">
