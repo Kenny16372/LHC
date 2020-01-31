@@ -17,14 +17,14 @@ public class ControlCenter {
     private String id;
     private EventBus eventBus;
 
-    public ControlCenter() throws InvalidKeyException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, NoSuchPaddingException {
+    public ControlCenter() {
         id = "C01";
         this.reader = new Reader();
         this.eventBus = new EventBus("CC-" + this.id);
     }
 
     
-    public void startExperiement(int initalEnergy){
+    public void startExperiment(int initalEnergy){
         eventBus.post(new RunExperimentFull(initalEnergy,this));
     }
     

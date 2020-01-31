@@ -13,7 +13,7 @@ import java.util.LinkedList;
 public class Detector extends Subscriber{
     private String higgsBosonStructure;
     private boolean isActivated;
-    private LinkedList<Experiment> experimentList;
+    private LinkedList<Experiment> experimentList = new LinkedList<>();
     private Reader reader;
 
     public Experiment getCurrentExperiment(){
@@ -27,13 +27,19 @@ public class Detector extends Subscriber{
     @Subscribe
     public void receive(Analyse event){
         Experiment experiment = event.experiment;
+        boolean found = false;
         this.experimentList.add(experiment);
         for(Block b:experiment.getBlocks()){
-            if(Main.search(b.getStructure(), this.higgsBosonStructure) > 0){
-                experiment.setIsHiggsBosonFound(true);
-                return;
+            try{
+                if(Main.search(b.getStructure(), this.higgsBosonStructure) > 0){
+                    found = true;
+                }
+            }catch(Exception e){
+                e.printStackTrace();
             }
+
         }
-        experiment.setIsHiggsBosonFound(false);
+        experiment.setIsHiggsBosonFound(found);
+        System.out.println(experiment.getUUID() + ": " + experiment.getIsHiggsBosonFound());
     }
 }

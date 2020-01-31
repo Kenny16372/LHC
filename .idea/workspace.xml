@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38fa9b51-a04a-4f1f-a1ed-8bb4094084b7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/boyermoore/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/boyermoore/build.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/knuthmorrispratt/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/knuthmorrispratt/build.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nativ/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nativ/build.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

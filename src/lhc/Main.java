@@ -1,8 +1,11 @@
 package lhc;
 
+import hr.Researcher;
 import hr.SecurityOfficer;
 import hr.Visitor;
 import hr.dep.HRAssistant;
+import infrastructure.lhc.Detector;
+import infrastructure.lhc.Ring;
 import infrastructure.security.*;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -58,18 +61,30 @@ public class Main {
         reader.insertIDCard(visitor.getIdCard());
         System.out.println(reader.allowEntry() ? "Darf betreten" : "Darf nicht betreten");
         reader.removeIDCard();
+
+        System.out.println("Starting experiment");
+        Ring ring = new Ring(1);
+        Detector detector = new Detector(2);
+        ControlCenter controlCenter = new ControlCenter();
+        controlCenter.addSubscriber(ring);
+        controlCenter.addSubscriber(detector);
+        controlCenter.startExperiment(5000, ExperimentScope.ESFull);
+
+        //Researcher researcher = new Researcher();
+        //researcher.updateExperiment(detector);
     }
 
     public static int search(String text, String pattern){
         try {
-            return (int) port.getClass().getMethod("search", String.class, String.class).invoke(text, pattern);
+            return (int) port.getClass().getMethod("search", String.class, String.class).invoke(port, text, pattern);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
+            return -1;
         } catch (InvocationTargetException e) {
             e.printStackTrace();
+            return -1;
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
-        } finally {
             return -1;
         }
     }
