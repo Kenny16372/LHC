@@ -15,6 +15,5 @@ public class Researcher extends Employee {
 
     public void updateExperiment(Detector detector){
         this.experiment = detector.getCurrentExperiment();
-        System.out.println(experiment.getUUID() + ":" + experiment.getIsHiggsBosonFound());
     }
 }
